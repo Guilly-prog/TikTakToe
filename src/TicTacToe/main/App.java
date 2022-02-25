@@ -1,5 +1,7 @@
 package TicTacToe.main;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -32,7 +34,16 @@ public class App {
 		String xo = scan.next();
 		jogador = new Jogador(name, XorO.valueOf(xo.toUpperCase(Locale.ROOT)));
 
-		
+		System.out.println("Qual será as coordenadas da sua jogada?");
+		String lastMove = scan.next();
+		List<String> subStringList = Arrays.asList(lastMove.split(","));
+		for(int i = 0; i < subStringList.size(); i++){
+			subStringList.set(i, subStringList.get(i).trim());
+		}
+		TikTakToe.realizaJogada(
+				Integer.parseInt(subStringList.get(0)),
+				Integer.parseInt(subStringList.get(1)),
+				jogo.getJogador1().getXo().getDescricao());
 		
 		
 		

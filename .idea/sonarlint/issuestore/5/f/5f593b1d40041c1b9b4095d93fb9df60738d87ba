@@ -1,0 +1,29 @@
+
+]	java:S125"<This block of commented-out lines of code should be removed.(Ş® «ûÿÿÿÿ8¸ë˜Ìò/
+>	java:S108")Either remove or fill this block of code.(¯Äâ
+S	java:S106B"9Replace this use of System.out or System.err by a logger.(â¥Ìòüÿÿÿÿ
+4
+java:S3010X"Remove this assignment of "n".(œÁ™·
+<
+java:S3010Y"&Remove this assignment of "tabuleiro".(ì½ç
+K
+java:S2209X"5Change this instance-reference to a static reference.(œÁ™·
+K
+java:S2209Y"5Change this instance-reference to a static reference.(ì½ç
+L
+java:S2696o"6Make the enclosing method "static" or remove this set.(œÁ™·
+K
+java:S2209o"5Change this instance-reference to a static reference.(œÁ™·
+Q
+java:S2696v"6Make the enclosing method "static" or remove this set.(½öÃûüÿÿÿÿ
+P
+java:S2209v"5Change this instance-reference to a static reference.(½öÃûüÿÿÿÿ
+7
+java:S1643L"Use a StringBuilder instead.(ÚÎÌ’ùÿÿÿÿ
+>
+java:S1643N"Use a StringBuilder instead.(²Æşˆüÿÿÿÿ8Äİ’Ìò/
+9
+java:S1643Q"Use a StringBuilder instead.(¸‡‘‚8ı’Ìò/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Œ©Ïæ
+T
+java:S3516"9Refactor this method to not always return the same value.(ÿÏ€ûÿÿÿÿÿ

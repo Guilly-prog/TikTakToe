@@ -90,7 +90,19 @@ public class TikTakToe {
 		popularTabuleiroInicial();
 	}
 
+	public static Jogador getJogador1() {
+		return jogador1;
+	}
+	public static void setJogador1(Jogador jogador1) {
+		TikTakToe.jogador1 = jogador1;
+	}
 
+	public static Jogador getJogador2() {
+		return jogador2;
+	}
+	public static void setJogador2(Jogador jogador2) {
+		TikTakToe.jogador2 = jogador2;
+	}
 
 	public int getN() {
 		return n;

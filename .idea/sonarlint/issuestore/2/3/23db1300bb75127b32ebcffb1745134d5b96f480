@@ -1,0 +1,10 @@
+
+>
+java:S3066
+"#Lower the visibility of this field.(…§‡‰úÿÿÿÿ
+R
+java:S3066"<Lower the visibility of this setter or remove it altogether.(ËÐø¶
+p
+java:S1104
+"UMake descricao a static final constant or non-public and provide accessors if needed.(…§‡‰úÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ù›ýÈøÿÿÿÿ
