@@ -11,6 +11,8 @@ public class TikTakToe {
 	private static Jogador jogador1;
 
 	private static Jogador jogador2;
+	
+	String statusTabuleiro = "";
 
 
 	public static void popularTabuleiroInicial() {
@@ -69,8 +71,7 @@ public class TikTakToe {
 	}
 
 	@Override
-	public String toString() {
-		String statusTabuleiro = "";
+	public String toString() {		
 		for(int i = 0; i<n; i++) {
 			for(int j = 0; j<n; j++) {
 				statusTabuleiro += tabuleiro[i][j].getDescricao();

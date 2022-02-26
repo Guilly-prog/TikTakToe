@@ -24,27 +24,29 @@ public class App {
 		System.out.println("primeiramente quais as dimencoes do tabuleiro?");
 
 		Integer dimencao = scan.nextInt();
+		scan.nextLine();
 		jogo = new TikTakToe(dimencao);
 		System.out.print(jogo.toString());
 
 		System.out.println("Qual o seu nome?");
-		String name = scan.next();
+		String name = scan.nextLine();
 
 		System.out.println("Quer ser o jogador X ou Y?");
 		String xo = scan.next();
 		jogador = new Jogador(name, XorO.valueOf(xo.toUpperCase(Locale.ROOT)));
 
 		System.out.println("Qual será as coordenadas da sua jogada?");
-		String lastMove = scan.next();
+		String lastMove = scan.nextLine();
 		List<String> subStringList = Arrays.asList(lastMove.split(","));
+		Integer x = null;
+		Integer y = null;
 		for(int i = 0; i < subStringList.size(); i++){
 			subStringList.set(i, subStringList.get(i).trim());
+			x = Integer.parseInt(subStringList.get(0));
+			y = Integer.parseInt(subStringList.get(i));
 		}
-		TikTakToe.realizaJogada(
-				Integer.parseInt(subStringList.get(0)),
-				Integer.parseInt(subStringList.get(1)),
-				jogo.getJogador1().getXo().getDescricao());
-		
+		TikTakToe.realizaJogada(x, y, jogo.getJogador1().getXo().getDescricao());
+		System.out.print(jogo.toString());
 		
 		
 		
