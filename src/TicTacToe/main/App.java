@@ -13,7 +13,8 @@ public class App {
 
 	private static Scanner scan;
 	private static TikTakToe jogo;
-	private static Jogador jogador;
+	private static Jogador jogador1;
+	private static Jogador jogador2;
 
 	public static void main(String[] args) {
 
@@ -31,24 +32,47 @@ public class App {
 		System.out.println("Qual o seu nome?");
 		String name = scan.nextLine();
 
-		System.out.println("Quer ser o jogador X ou Y?");
-		String xo = scan.next();
-		jogador = new Jogador(name, XorO.valueOf(xo.toUpperCase(Locale.ROOT)));
+		System.out.println("Quer ser o jogador X ou O?");
+		String xo1 = scan.nextLine();
+		String xo2; 
 
-		System.out.println("Qual será as coordenadas da sua jogada?");
-		String lastMove = scan.nextLine();
-		List<String> subStringList = Arrays.asList(lastMove.split(","));
-		Integer x = null;
-		Integer y = null;
-		for(int i = 0; i < subStringList.size(); i++){
-			subStringList.set(i, subStringList.get(i).trim());
-			x = Integer.parseInt(subStringList.get(0));
-			y = Integer.parseInt(subStringList.get(i));
+		if (xo1.equalsIgnoreCase("x")) {
+			xo2 = "o";
+		} else {
+			xo2 = "x";
 		}
-		TikTakToe.realizaJogada(x, y, jogo.getJogador1().getXo().getDescricao());
-		System.out.print(jogo.toString());
-		
-		
-		
+		jogador1 = new Jogador(name, XorO.valueOf(xo1.toUpperCase(Locale.ROOT)));
+		jogador2 = new Jogador(name, XorO.valueOf(xo2.toUpperCase(Locale.ROOT)));
+		System.out.println("Certo, então seu adversario será: " + xo2);
+		TikTakToe.setJogador1(jogador1);
+		TikTakToe.setJogador2(jogador2);
+
+		Integer counting = 2;
+		do {
+			if (counting % 2 == 0) {
+				System.out.print("JOGADOR 1 '" + jogador1.getXo().getDescricao() + "' : ");
+			} else {
+				System.out.print("JOGADOR 2 '" + jogador2.getXo().getDescricao() + "' : ");
+			}
+			System.out.println("Qual será as coordenadas da sua jogada(linha x coluna)?");
+			String lastMove = scan.nextLine();
+			List<String> subStringList = Arrays.asList(lastMove.split(","));
+			int x = 0;
+			int y = 0;
+			for(int i = 0; i < subStringList.size(); i++){
+				subStringList.set(i, subStringList.get(i).trim());
+				x = Integer.parseInt(subStringList.get(0));
+				y = Integer.parseInt(subStringList.get(i));
+			}
+			if (counting % 2 == 0) {
+				TikTakToe.realizaJogada(x, y, TikTakToe.getJogador1().getXo().getDescricao());
+			} else {
+				TikTakToe.realizaJogada(x, y, TikTakToe.getJogador2().getXo().getDescricao());
+			}
+			System.out.print(jogo.toString());
+			counting ++;
+		} while (true);
+
+
 	}
 }

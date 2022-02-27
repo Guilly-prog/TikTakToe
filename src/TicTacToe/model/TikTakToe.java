@@ -11,17 +11,15 @@ public class TikTakToe {
 	private static Jogador jogador1;
 
 	private static Jogador jogador2;
-	
-	String statusTabuleiro = "";
+		
 
 
 	public static void popularTabuleiroInicial() {
 		for(int i = 0; i<n; i++) {
 			for(int j = 0; j<n; j++) {
-				tabuleiro[i][j] = XorO.TYPE_BLANK;
-//				tabuleiro[i][j] = XorO.TYPE_O;
+				tabuleiro[i][j] = XorO.TYPE_BLANK;				
 			}
-		}
+		}		
 	}
 
 	public static boolean verificaGanhador() {
@@ -48,7 +46,7 @@ public class TikTakToe {
 			return false;
 		} else {
 			XorO[][] tab = tabuleiro;
-			tab[x][y] = validaValor(valor);
+			tab[x-1][y-1] = validaValor(valor);
 		}
 		return true;
 	}
@@ -71,7 +69,8 @@ public class TikTakToe {
 	}
 
 	@Override
-	public String toString() {		
+	public String toString() {
+		String statusTabuleiro = "";
 		for(int i = 0; i<n; i++) {
 			for(int j = 0; j<n; j++) {
 				statusTabuleiro += tabuleiro[i][j].getDescricao();

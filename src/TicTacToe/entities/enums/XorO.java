@@ -5,7 +5,7 @@ public enum XorO {
 		
 	X("X"),
 	O("O"),
-	TYPE_BLANK("  ");
+	TYPE_BLANK(" ");
 	
 	public String descricao;
 
