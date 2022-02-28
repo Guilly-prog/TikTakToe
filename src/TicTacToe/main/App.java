@@ -30,7 +30,7 @@ public class App {
 		System.out.print(jogo.toString());
 
 		System.out.println("Qual o seu nome?");
-		String name = scan.nextLine();
+		String name1 = scan.nextLine();
 
 		System.out.println("Quer ser o jogador X ou O?");
 		String xo1 = scan.nextLine();
@@ -41,9 +41,13 @@ public class App {
 		} else {
 			xo2 = "x";
 		}
-		jogador1 = new Jogador(name, XorO.valueOf(xo1.toUpperCase(Locale.ROOT)));
-		jogador2 = new Jogador(name, XorO.valueOf(xo2.toUpperCase(Locale.ROOT)));
 		System.out.println("Certo, então seu adversario será: " + xo2);
+		System.out.println("Qual o nome do segundo joador?");
+		String name2 = scan.nextLine();
+
+		jogador1 = new Jogador(name1, XorO.valueOf(xo1.toUpperCase(Locale.ROOT)));
+		jogador2 = new Jogador(name2, XorO.valueOf(xo2.toUpperCase(Locale.ROOT)));
+
 		TikTakToe.setJogador1(jogador1);
 		TikTakToe.setJogador2(jogador2);
 
@@ -71,7 +75,8 @@ public class App {
 			}
 			System.out.print(jogo.toString());
 			counting ++;
-		} while (true);
+			
+		} while (!TikTakToe.verificaGanhador());
 
 
 	}
