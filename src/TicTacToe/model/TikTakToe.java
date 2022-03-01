@@ -71,13 +71,26 @@ public class TikTakToe {
         /*
         loops que testam as verticais
          */
-        //TODO
         for (int j = 0; j < n; j++) {
-            if (tabuleiro[j][0].getDescricao().equalsIgnoreCase(jogador1.getXo().toString())) {
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador1.getXo().toString())) {
                 countj1++;
             }
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador2.getXo().toString())) {
+                countj2++;
+            }
         }
-        return true;
+        for (int j = n-1; j >= 0; j--) {
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador1.getXo().toString())) {
+                countj1++;
+            }
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador2.getXo().toString())) {
+                countj2++;
+            }
+        }
+        if ((countj1 == (2 * n)) || (countj2 == (2 * n))) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -89,7 +102,7 @@ public class TikTakToe {
      * @return
      */
     public static boolean realizaJogada(Integer x, Integer y, String valor) {
-        if (tabuleiro[x][y] != XorO.TYPE_BLANK) {
+        if (tabuleiro[x-1][y-1] != XorO.TYPE_BLANK) {
             return false;
         } else {
             XorO[][] tab = tabuleiro;
