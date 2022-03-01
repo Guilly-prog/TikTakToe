@@ -1,13 +1,13 @@
 package TicTacToe.main;
 
+import TicTacToe.entities.enums.XorO;
+import TicTacToe.model.Jogador;
+import TicTacToe.model.TikTakToe;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-
-import TicTacToe.entities.enums.XorO;
-import TicTacToe.model.Jogador;
-import TicTacToe.model.TikTakToe;
 
 public class App {
 
@@ -62,21 +62,32 @@ public class App {
 		do {
 			TikTakToe.popularTabuleiroInicial();
 			do {
-				if (counting % 2 == 0) {
-					System.out.print(jogador1.getName() + " '" + jogador1.getXo().getDescricao() + "' : ");
-				} else {
-					System.out.print(jogador2.getName() + " '" + jogador2.getXo().getDescricao() + "' : ");
-				}
-				System.out.println("Qual será as coordenadas da sua jogada(linha x coluna)?");
-				String lastMove = scan.nextLine();
-				List<String> subStringList = Arrays.asList(lastMove.split(","));
 				int x = 0;
 				int y = 0;
-				for (int i = 0; i < subStringList.size(); i++) {
-					subStringList.set(i, subStringList.get(i).trim());
-					x = Integer.parseInt(subStringList.get(0));
-					y = Integer.parseInt(subStringList.get(i));
-				}
+				boolean posicaoOcupada = false;
+				do {
+					if (counting % 2 == 0) {
+						System.out.print(jogador1.getName() + " '" + jogador1.getXo().getDescricao() + "' : ");
+					} else {
+						System.out.print(jogador2.getName() + " '" + jogador2.getXo().getDescricao() + "' : ");
+					}
+					System.out.println("Qual será as coordenadas da sua jogada(linha x coluna)?");
+					String lastMove = scan.nextLine();
+					List<String> subStringList = Arrays.asList(lastMove.split(","));
+					x = 0;
+					y = 0;
+					for (int i = 0; i < subStringList.size(); i++) {
+						subStringList.set(i, subStringList.get(i).trim());
+						x = Integer.parseInt(subStringList.get(0));
+						y = Integer.parseInt(subStringList.get(i));
+					}
+					if (TikTakToe.getTabuleiro()[x][y] != XorO.TYPE_BLANK) {
+						System.out.println("Ops, ja ha uma jogada nessa posicao, escolha outro lugar");
+						posicaoOcupada = true;
+					}
+				} while (posicaoOcupada);
+
+
 				if (counting % 2 == 0) {
 					TikTakToe.realizaJogada(x, y, TikTakToe.getJogador1().getXo().getDescricao());
 				} else {

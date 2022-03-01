@@ -167,7 +167,7 @@ public class TikTakToe {
         TikTakToe.n = n;
     }
 
-    public XorO[][] getTabuleiro() {
+    public static XorO[][] getTabuleiro() {
         return tabuleiro;
     }
 
