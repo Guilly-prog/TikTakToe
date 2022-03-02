@@ -4,10 +4,7 @@ import TicTacToe.entities.enums.XorO;
 import TicTacToe.model.Jogador;
 import TicTacToe.model.TikTakToe;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
 
@@ -22,10 +19,22 @@ public class App {
 
         System.out.println("----------------------------------------");
         System.out.println("--Bem vindo ao jogo da velha do milhao--");
-        System.out.println("primeiramente quais as dimencoes do tabuleiro?");
+        boolean dimencaoOk;
+        int dimencao = 0;
+        do {
+            try {
+                dimencaoOk = false;
 
-        Integer dimencao = scan.nextInt();
-        scan.nextLine();
+                System.out.println("Quais as dimencoes do tabuleiro?");
+                dimencao = scan.nextInt();
+                scan.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Normalmente usamos numeros para medir as dimencoes de algo");
+                scan.next();
+                dimencaoOk = true;
+            }
+        } while (dimencaoOk);
+
         jogo = new TikTakToe(dimencao);
         System.out.print(jogo.toString());
 
