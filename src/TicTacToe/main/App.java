@@ -115,10 +115,20 @@ public class App {
                 counting++;
 
             } while (!TikTakToe.verificaGanhador());
-            System.out.println("O jogo acabou, gostaria de jogar de novo? 'sim' ou 'nao'");
+            TikTakToe.quemGanhou().setPontos(TikTakToe.quemGanhou().getPontos() + 1);
+            System.out.println("O jogo acabou, digite 'sim' caso queira jogar de novo");
             jogarNovamente = scan.nextLine();
         } while (jogarNovamente.equalsIgnoreCase("sim"));
 
 
+        if (Objects.isNull(TikTakToe.maisPontos())){
+            System.out.println("É um empate e ambos tem: " + TikTakToe.getJogador1().getPontos() + " pontos");
+        } else if (TikTakToe.maisPontos() == TikTakToe.getJogador1()){
+            System.out.println("Com: " + TikTakToe.getJogador1().getPontos() + " pontos"
+                    + " o vencedor é " + TikTakToe.getJogador1().getName());
+        } else if (TikTakToe.maisPontos() == TikTakToe.getJogador2()) {
+            System.out.println("Com: " + TikTakToe.getJogador2().getPontos() + " pontos"
+                    + " o vencedor é " + TikTakToe.getJogador2().getName());
+        }
     }
 }

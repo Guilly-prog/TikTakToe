@@ -27,6 +27,10 @@ public class TikTakToe {
         }
     }
 
+    /**
+     *  Metodo que verifica se há um ganhador
+     * @return
+     */
     public static boolean verificaGanhador() {
         int countj1 = 0;
         int countj2 = 0;
@@ -94,6 +98,85 @@ public class TikTakToe {
     }
 
     /**
+     *  Metodo que verifica quem é o ganhador
+     * @return
+     */
+    public static Jogador quemGanhou() {
+        int countj1 = 0;
+        int countj2 = 0;
+        /*
+        loops que testam as linhas
+         */
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (tabuleiro[i][j].getDescricao().equalsIgnoreCase(jogador1.getXo().toString())) {
+                    countj1++;
+                }
+                if (tabuleiro[i][j].getDescricao().equalsIgnoreCase(jogador2.getXo().toString())) {
+                    countj2++;
+                }
+            }
+            if (countj1 == n) return jogador1;
+            else if (countj2 == n) return jogador2;
+            else {
+                countj1 = 0;
+                countj2 = 0;
+            }
+        }
+        /*
+        loops que testam as colunas
+         */
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (tabuleiro[j][i].getDescricao().equalsIgnoreCase(jogador1.getXo().toString())) {
+                    countj1++;
+                }
+                if (tabuleiro[j][i].getDescricao().equalsIgnoreCase(jogador2.getXo().toString())) {
+                    countj2++;
+                }
+            }
+            if (countj1 == n) return jogador1;
+            else if (countj2 == n) return jogador2;
+            else {
+                countj1 = 0;
+                countj2 = 0;
+            }
+        }
+        /*
+        loops que testam as verticais
+         */
+        for (int j = 0; j < n; j++) {
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador1.getXo().toString())) {
+                countj1++;
+            }
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador2.getXo().toString())) {
+                countj2++;
+            }
+        }
+        for (int j = n-1; j >= 0; j--) {
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador1.getXo().toString())) {
+                countj1++;
+            }
+            if (tabuleiro[j][j].getDescricao().equalsIgnoreCase(jogador2.getXo().toString())) {
+                countj2++;
+            }
+        }
+        if (countj1 == n) return jogador1;
+        else if (countj2 == n) return jogador2;
+        else {
+            countj1 = 0;
+            countj2 = 0;
+        }
+        return null;
+    }
+
+    public static Jogador maisPontos(){
+        if (jogador1.getPontos() > jogador2.getPontos()) return jogador1;
+        else if (jogador1.getPontos() < jogador2.getPontos()) return jogador2;
+        else return null;
+    }
+
+    /**
      * Metodo que preenche uma posicao especifica da matrix com o valor indicado
      *
      * @param x
@@ -122,10 +205,7 @@ public class TikTakToe {
             return XorO.X;
         } else if (valor.equalsIgnoreCase("o")) {
             return XorO.O;
-        } else {
-            System.out.println("Caracter invalido, tente novamente");
-            return XorO.TYPE_BLANK;
-        }
+        } else return XorO.TYPE_BLANK;
     }
 
     public static Jogador getJogador1() {
